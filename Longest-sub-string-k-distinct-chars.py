@@ -70,8 +70,8 @@ def find_longest_substring(input_val, length):
     for current_ptr in range(len(input_val)):
         tracker[input_val[current_ptr]] += 1
         while len(tracker) > k:
-            # print(tracker)
-            # print(len(tracker))
+            print(tracker)
+            print(len(tracker))
             tracker[input_val[pivot_ptr]] -= 1
             if tracker[input_val[pivot_ptr]] == 0:
                 del tracker[input_val[pivot_ptr]]
@@ -97,8 +97,8 @@ def find_longest_substring_conventional(input_val, length):
                 max_length = len(temp_list) if len(temp_list) > max_length else max_length
     max_length = max_length if max_length != 0 or length == 0 else len(input_val)
     return max_length
-s = "aaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbcccccdddddd"
-k = 2
+s = "aabcdefff"
+k = 3
 start = time.time()
 answer = find_longest_substring_conventional(s,k)
 print(answer)
