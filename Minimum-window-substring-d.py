@@ -75,6 +75,7 @@ def find_min_substring(input_val, sub_string):
     sub_string_count = Counter(sub_string)
     matching_chars_needed = len(sub_string_count)
     print(sub_string_count)
+    match_found_flag = False
     for current_ptr in range(len(input_val)):
         print(f"current pointer::: {current_ptr}")
         print(f"current matching chars::: {matching_chars_found}")
@@ -84,6 +85,7 @@ def find_min_substring(input_val, sub_string):
         if val in sub_string_count and tracker[val] == sub_string_count[val]:
             matching_chars_found += 1
         while matching_chars_needed == matching_chars_found and matching_chars_needed:
+            match_found_flag = True
             print(f"pivot pointer::: {pivot_ptr}")
             print("Required values matched")
             print(tracker)
@@ -95,11 +97,13 @@ def find_min_substring(input_val, sub_string):
                 matching_chars_found -= 1
             pivot_ptr += 1
 
-    return "" if current_shortest_substring == sub_string else current_shortest_substring
+    return current_shortest_substring if match_found_flag else ""
 
 
-s = "αβγδεζηθικλμνξοπρστυφχψω"
-t = "σψω"
+# s = "αβγδεζηθικλμνξοπρστυφχψω"
+# t = "σψω"
+s = "a"
+t = "b"
 answer = find_min_substring(s,t)
 
 print(f"answer:: {answer}")
