@@ -1,4 +1,12 @@
-
+import datetime
+def timer(funct):
+    def run_timer(*args,**kwargs):
+        start = datetime.datetime.now()
+        funct(*args,**kwargs)
+        end = datetime.datetime.now()
+        result_time = end - start
+        print(result_time)
+    return run_timer
 
 def sort_keys():
     '''
@@ -18,6 +26,7 @@ def sort_values():
     answer = dict(sorted(input_val.items(),key= lambda x:x[1]))
     print(answer)
 
+@timer
 def group_anagrams():
     '''
     group the anagrams & sort them
